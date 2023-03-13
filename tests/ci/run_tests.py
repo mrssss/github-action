@@ -1,2 +1,5 @@
+import os
+
 if __name__ == '__main__':
-    pass
+    for (k, v) in os.environ.items():
+        print(k, v)

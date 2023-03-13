@@ -29,4 +29,4 @@ jobs:
       - name: Run test
         run: |
           cd "$GITHUB_WORKSPACE/tests/ci"
-          python3 run_test.py
+          python3 run_tests.py

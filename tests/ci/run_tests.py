@@ -32,6 +32,9 @@ if __name__ == '__main__':
         context="FOOBAR",
         description="This call create_status",
         state="failure",
-        target_url=GITHUB_RUN_URL
+        target_url=GITHUB_RUN_URL,
     )
     print(commit)
+
+    print(GITHUB_SHA)
+    print(GITHUB_RUN_URL)

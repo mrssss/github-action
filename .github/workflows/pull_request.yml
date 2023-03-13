@@ -27,6 +27,8 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Run test
+        env:
+          GH_PERSONAL_ACCESS_TOKEN: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
         run: |
           cd "$GITHUB_WORKSPACE/tests/ci"
           python3 run_tests.py

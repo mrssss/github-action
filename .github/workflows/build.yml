@@ -1,0 +1,34 @@
+name: build
+
+on: # yamllint disable-line rule:truthy
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Docker image tag'
+        required: true
+        type: string
+        default: 'build'
+
+jobs:
+  prepare_sanitizer:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      # Runs a set of commands using the runners shell
+      - name: Run build
+        env:
+          GH_PERSONAL_ACCESS_TOKEN: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
+        run: |
+          echo "Build: ${{github.event.inputs.tag}}"
+          curl -L \
+            -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: qniu $(GH_PERSONAL_ACCESS_TOKEN)"\
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            https://api.github.com/repos/OWNER/REPO/actions/workflows/test.yml/dispatches \
+            -d '{"ref":"main","inputs":{"tag":"${{github.event.inputs.tag}}"}}'

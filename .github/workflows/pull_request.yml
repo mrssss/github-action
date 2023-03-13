@@ -31,4 +31,5 @@ jobs:
           GH_PERSONAL_ACCESS_TOKEN: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
         run: |
           cd "$GITHUB_WORKSPACE/tests/ci"
+          pip install -r requirements.txt
           python3 run_tests.py

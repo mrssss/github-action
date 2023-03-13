@@ -27,13 +27,16 @@ if __name__ == '__main__':
     gh = Github(GH_PERSONAL_ACCESS_TOKEN)
 
     commit = get_commit(gh, GITHUB_SHA)
+    comit_statuses = commit.get_statuses()
+    # commit.create_status(
+    #     context="FOOBAR",
+    #     description="This call create_status",
+    #     state="failure",
+    #     target_url=GITHUB_RUN_URL,
+    # )
+    for status in comit_statuses:
+        print(status)
 
-    commit.create_status(
-        context="FOOBAR",
-        description="This call create_status",
-        state="failure",
-        target_url=GITHUB_RUN_URL,
-    )
     print(commit)
 
     print(GITHUB_SHA)

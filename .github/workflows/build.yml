@@ -10,7 +10,7 @@ on: # yamllint disable-line rule:truthy
         default: 'build'
 
 jobs:
-  prepare_sanitizer:
+  build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 

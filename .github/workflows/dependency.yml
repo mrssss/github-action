@@ -21,7 +21,9 @@ jobs:
     runs-on: ubuntu-latest
     if: true
     steps:
-      - run: false
+      - run: |
+        sleep 10
+        false
 
   job-ab:
     name: Job AB

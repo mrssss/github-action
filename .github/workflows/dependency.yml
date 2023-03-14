@@ -19,9 +19,9 @@ jobs:
   job-b:
     name: Job B
     runs-on: ubuntu-latest
-    if: false
+    if: true
     steps:
-      - run: true
+      - run: false
 
   job-ab:
     name: Job AB
